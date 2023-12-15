@@ -1,14 +1,19 @@
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+	"net/http"
 
+	"github.com/a-h/templ"
 	"github.com/yousefzinsazk78/templ_test_project/templates"
 )
 
 func main() {
-	fmt.Println("this is test from yousef...")
-	templates.Hello("yousef").Render(context.TODO(), os.Stdout)
+	helloComponent := templates.Hello("sina")
+
+	http.Handle("/", templ.Handler(helloComponent))
+
+	if err := http.ListenAndServe(":8000", nil); err != nil {
+		panic(err)
+	}
+
 }
