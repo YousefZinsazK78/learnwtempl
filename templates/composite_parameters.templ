@@ -1,0 +1,24 @@
+package templates
+
+templ header() {
+	<h1>header</h1>
+}
+
+templ Layout(contents templ.Component){
+    <div id="heading">
+        @header()
+    </div>
+    <div id="contents">
+        @contents
+    </div>
+}
+
+templ Paraghraph(contents string) {
+	<p>
+		{ contents }
+	</p>
+}
+
+templ Root() {
+	@Layout(Paraghraph("Dynamic contents"))
+}

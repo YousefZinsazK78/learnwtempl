@@ -30,6 +30,8 @@ func main() {
 	forloopComponent := templates.ForLoopDisplay(items)
 	compositeComponent := templates.ShowAll()
 	compositeComponent2 := templates.ShowAllChildren()
+	compositeParamsComponent := templates.Layout(templates.Paraghraph("string content from main.go"))
+	compositeParamsComponent2 := templates.Root()
 
 	http.Handle("/", templ.Handler(helloComponent))
 	http.Handle("/btn", templ.Handler(buttonComponent))
@@ -47,6 +49,8 @@ func main() {
 	http.Handle("/for", templ.Handler(forloopComponent))
 	http.Handle("/compo", templ.Handler(compositeComponent))
 	http.Handle("/compo2", templ.Handler(compositeComponent2))
+	http.Handle("/compo3", templ.Handler(compositeParamsComponent))
+	http.Handle("/compo4", templ.Handler(compositeParamsComponent2))
 
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		panic(err)
