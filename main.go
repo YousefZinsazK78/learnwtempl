@@ -18,6 +18,8 @@ func main() {
 	textbuttonComponent := templates.Button3("text text text")
 	expressionComponent := templates.ExpressionComp()
 	greetComponent := templates.Greet("yousef and sina")
+	statementComponent := templates.ShowIf(false)
+	statementComponent2 := templates.Display(2003.2, 23)
 
 	http.Handle("/", templ.Handler(helloComponent))
 	http.Handle("/btn", templ.Handler(buttonComponent))
@@ -28,6 +30,8 @@ func main() {
 	http.Handle("/scriptbtn", templ.Handler(textbuttonComponent))
 	http.Handle("/expr", templ.Handler(expressionComponent))
 	http.Handle("/greet", templ.Handler(greetComponent))
+	http.Handle("/state", templ.Handler(statementComponent))
+	http.Handle("/display", templ.Handler(statementComponent2))
 
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		panic(err)

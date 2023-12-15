@@ -1,0 +1,21 @@
+package templates
+
+import "fmt"
+
+templ ShowIf(b bool) {
+    <div>
+        if b {
+            <p>
+                hello, world!
+            </p>
+        }
+    </div>
+}
+
+templ Display(price float64, count int) {
+	<p>Switch to Linux</p>
+	<p>{ `switch to Linux` }</p>
+	<p>{ "for a day" }</p>
+	<p>{ fmt.Sprintf("%f", price) }{ "for" }{ fmt.Sprintf("%d", count) }</p>
+	<p>{ fmt.Sprintf("%f for %d", price, count) }</p>
+}
