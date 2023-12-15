@@ -20,6 +20,7 @@ func main() {
 	greetComponent := templates.Greet("yousef and sina")
 	statementComponent := templates.ShowIf(false)
 	statementComponent2 := templates.Display(2003.2, 23)
+	statementComponent3 := templates.Login(true)
 
 	http.Handle("/", templ.Handler(helloComponent))
 	http.Handle("/btn", templ.Handler(buttonComponent))
@@ -32,6 +33,7 @@ func main() {
 	http.Handle("/greet", templ.Handler(greetComponent))
 	http.Handle("/state", templ.Handler(statementComponent))
 	http.Handle("/display", templ.Handler(statementComponent2))
+	http.Handle("/login", templ.Handler(statementComponent3))
 
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		panic(err)

@@ -1,0 +1,11 @@
+package templates
+
+templ Login(isitLoggedIn bool) {
+    if isitLoggedIn {
+        <p>
+            welcome back!
+        </p>
+    } else {
+        <input name="login" type="button" value="Log in"/>
+    }
+}
