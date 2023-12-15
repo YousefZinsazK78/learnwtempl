@@ -1,0 +1,13 @@
+package templates
+
+templ Button(text string) {
+	<button>
+		{ text }
+	</button>
+}
+
+templ ButtonWithAttr(value,text string) {
+	<button value={ value }>
+		{ text }
+	</button>
+}
