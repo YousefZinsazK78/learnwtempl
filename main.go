@@ -28,6 +28,8 @@ func main() {
 	statementComponent3 := templates.Login(true)
 	usertypeComponent := templates.UserTypeDisplay("Test")
 	forloopComponent := templates.ForLoopDisplay(items)
+	compositeComponent := templates.ShowAll()
+	compositeComponent2 := templates.ShowAllChildren()
 
 	http.Handle("/", templ.Handler(helloComponent))
 	http.Handle("/btn", templ.Handler(buttonComponent))
@@ -43,6 +45,8 @@ func main() {
 	http.Handle("/login", templ.Handler(statementComponent3))
 	http.Handle("/type", templ.Handler(usertypeComponent))
 	http.Handle("/for", templ.Handler(forloopComponent))
+	http.Handle("/compo", templ.Handler(compositeComponent))
+	http.Handle("/compo2", templ.Handler(compositeComponent2))
 
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		panic(err)

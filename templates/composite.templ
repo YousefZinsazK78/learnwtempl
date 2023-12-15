@@ -1,0 +1,36 @@
+package templates
+
+templ ShowAll() {
+	@left()
+	@right()
+	@middle()
+}
+
+templ left() {
+	<div>Left</div>
+}
+
+templ middle() {
+	<div>Middle</div>
+}
+
+templ right() {
+	<div>Right</div>
+}
+
+templ ShowAllChildren() {
+	@wrapChildren() {
+		<div>
+			Inserted from the top
+		</div>
+		<div>
+			Inserted from the top 2
+		</div>
+	}
+}
+
+templ wrapChildren() {
+	<div id="wrapper">
+		{ children... }
+	</div>
+}
