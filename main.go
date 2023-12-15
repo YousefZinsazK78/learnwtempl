@@ -9,6 +9,11 @@ import (
 
 func main() {
 
+	var items = []templates.Item{
+		templates.Item{1, "yousef"},
+		templates.Item{2, "sina"},
+	}
+
 	helloComponent := templates.Hello("sina")
 	buttonComponent := templates.Button("Click Me!")
 	buttonComponent2 := templates.ButtonWithAttr("some value", "Click Me!")
@@ -22,6 +27,7 @@ func main() {
 	statementComponent2 := templates.Display(2003.2, 23)
 	statementComponent3 := templates.Login(true)
 	usertypeComponent := templates.UserTypeDisplay("Test")
+	forloopComponent := templates.ForLoopDisplay(items)
 
 	http.Handle("/", templ.Handler(helloComponent))
 	http.Handle("/btn", templ.Handler(buttonComponent))
@@ -36,6 +42,7 @@ func main() {
 	http.Handle("/display", templ.Handler(statementComponent2))
 	http.Handle("/login", templ.Handler(statementComponent3))
 	http.Handle("/type", templ.Handler(usertypeComponent))
+	http.Handle("/for", templ.Handler(forloopComponent))
 
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		panic(err)

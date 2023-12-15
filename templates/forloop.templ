@@ -1,0 +1,9 @@
+package templates
+
+templ ForLoopDisplay(items []Item) {
+	<ul>
+		for _, item := range items {
+			<li>{ item.Name }</li>
+		}
+	</ul>
+}
