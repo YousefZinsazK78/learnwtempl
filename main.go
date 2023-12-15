@@ -21,6 +21,7 @@ func main() {
 	statementComponent := templates.ShowIf(false)
 	statementComponent2 := templates.Display(2003.2, 23)
 	statementComponent3 := templates.Login(true)
+	usertypeComponent := templates.UserTypeDisplay("Test")
 
 	http.Handle("/", templ.Handler(helloComponent))
 	http.Handle("/btn", templ.Handler(buttonComponent))
@@ -34,6 +35,7 @@ func main() {
 	http.Handle("/state", templ.Handler(statementComponent))
 	http.Handle("/display", templ.Handler(statementComponent2))
 	http.Handle("/login", templ.Handler(statementComponent3))
+	http.Handle("/type", templ.Handler(usertypeComponent))
 
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		panic(err)

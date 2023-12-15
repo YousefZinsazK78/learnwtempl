@@ -1,0 +1,12 @@
+package templates
+
+templ UserTypeDisplay(usertype string) {
+	switch usertype {
+		case "Admin":
+			<span>{ "admin user" }</span>
+		case "Test":
+			<span>{ "test user" }</span>
+		default:
+			<span>{ "unknown user" }</span>
+	}
+}
