@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+
 	helloComponent := templates.Hello("sina")
 	buttonComponent := templates.Button("Click Me!")
 	buttonComponent2 := templates.ButtonWithAttr("some value", "Click Me!")
@@ -15,6 +16,8 @@ func main() {
 	condComponent := templates.ConditionAttr()
 	anchorComponent := templates.AnchorComponent("www.google.com/")
 	textbuttonComponent := templates.Button3("text text text")
+	expressionComponent := templates.ExpressionComp()
+	greetComponent := templates.Greet("yousef and sina")
 
 	http.Handle("/", templ.Handler(helloComponent))
 	http.Handle("/btn", templ.Handler(buttonComponent))
@@ -23,6 +26,8 @@ func main() {
 	http.Handle("/attrwcond", templ.Handler(condComponent))
 	http.Handle("/atag", templ.Handler(anchorComponent))
 	http.Handle("/scriptbtn", templ.Handler(textbuttonComponent))
+	http.Handle("/expr", templ.Handler(expressionComponent))
+	http.Handle("/greet", templ.Handler(greetComponent))
 
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		panic(err)
