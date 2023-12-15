@@ -1,0 +1,17 @@
+package templates
+
+script WithParams(a , b string) {
+    console.log(a , b);
+}
+
+script WithoutParams() {
+    alert('test hello world js script');
+}
+
+templ Button3(text string) {
+	<button onClick={ WithParams("1", "two texts") } onMouseOver={ WithoutParams() } type="button">
+		{ text }
+	</button>
+}
+
+

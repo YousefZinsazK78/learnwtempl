@@ -1,5 +1,18 @@
 package templates
 
-templ BooleanAttr() { 
-    <label disabled?={false}> Cheese</label>
+templ BooleanAttr() {
+	<label disabled?={ false }>Cheese</label>
+}
+
+templ ConditionAttr() {
+	<hr
+ 		if true {
+			style="background-color:blue;padding: 10px"
+		}
+	/>
+}
+
+templ AnchorComponent(url string) {
+	<a href={ templ.URL(url) }>url to url :)</a>
+	<a href={ templ.SafeURL(url) }>url to url 2 :)</a>
 }
