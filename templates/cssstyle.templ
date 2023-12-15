@@ -1,0 +1,48 @@
+package templates
+
+var red2 = "#ff0000"
+var blue = "#0000ff"
+
+css PrimaryClassName() {
+	background-color: #ffffff;
+	color: { red2 };
+}
+
+css ClassName() {
+	background-color: #ffffff;
+	color: { blue };
+}
+
+templ StyleButton33(text string, isPrimary bool) {
+    <link rel="stylesheet" href="/styles/templ.css" />
+	<button class={ "button", ClassName(), templ.KV(PrimaryClassName(), isPrimary) }>{ text }</button>
+}
+
+
+templ defaultStyle() {
+	<style>
+        button {
+            background-color:yellow;
+        }
+        .borderColor{
+            border: 5px solid red;
+        }
+        .bgblue{
+            background-color:blue;
+        }
+    </style>
+}
+
+templ StyleButton(text string, classname []string) {
+	@defaultStyle()
+	<button class={ classname }>{ text }</button>
+}
+
+templ StyleButton2(text string,isPrimary bool) {
+    @defaultStyle()
+	<button class={ "bgblue",templ.KV("is-primary", isPrimary), templ.KV(red(), isPrimary) }>{ text }</button>
+}
+
+css red() {
+	background-color: #ff0000;
+}

@@ -32,6 +32,12 @@ func main() {
 	compositeComponent2 := templates.ShowAllChildren()
 	compositeParamsComponent := templates.Layout(templates.Paraghraph("string content from main.go"))
 	compositeParamsComponent2 := templates.Root()
+	cssStyleComponent := templates.StyleButton("click me!", []string{"borderColor", "bgblue"})
+	cssStyleButtonComponent := templates.StyleButton2("click me!", false)
+	cssStyleButtonComponent3 := templates.StyleButton33("click meeee!", true)
+
+	var c1 = templates.ClassName()
+	var c2 = templates.PrimaryClassName()
 
 	http.Handle("/", templ.Handler(helloComponent))
 	http.Handle("/btn", templ.Handler(buttonComponent))
@@ -51,8 +57,13 @@ func main() {
 	http.Handle("/compo2", templ.Handler(compositeComponent2))
 	http.Handle("/compo3", templ.Handler(compositeParamsComponent))
 	http.Handle("/compo4", templ.Handler(compositeParamsComponent2))
+	http.Handle("/css1", templ.Handler(cssStyleComponent))
+	http.Handle("/css2", templ.Handler(cssStyleButtonComponent))
+	http.Handle("/css3", templ.Handler(cssStyleButtonComponent3))
 
-	if err := http.ListenAndServe(":8000", nil); err != nil {
+	handlerCss := templ.NewCSSMiddleware(templ.Handler(cssStyleButtonComponent3), c1, c2)
+
+	if err := http.ListenAndServe(":8000", handlerCss); err != nil {
 		panic(err)
 	}
 
