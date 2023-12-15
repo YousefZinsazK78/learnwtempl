@@ -1,5 +1,12 @@
 package templates
 
+import "strings"
+
+var greeting = "Welcome!"
+
 templ Hello(name string) {
-    <div>Hello, { name }</div>
+	<h1>
+		{ greeting }
+	</h1>
+	<div>Hello, { strings.ToUpper(name) }</div>
 }
